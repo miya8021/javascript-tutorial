@@ -9,7 +9,11 @@ function taskC() {
 }
 
 taskA();
-setTimeout(() => {
-    taskB();
-}, 1000);
-taskC();
+new Promise((resolve) => {
+  setTimeout(() => {
+      taskB();
+      resolve();
+  }, 1000);
+}).then(() =>{
+  taskC();
+})
